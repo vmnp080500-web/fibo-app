@@ -31,6 +31,9 @@ export function OrderCard({ pedido }: OrderCardProps) {
       alert("Erro ao atualizar o status.");
     }
   };
+
+  // A LINHA CORRIGIDA ENTRA BEM AQUI:
+  const formatDate = (timestamp: any) => {
     if (!timestamp?.toDate) return "";
     return timestamp.toDate().toLocaleDateString("pt-BR");
   };
