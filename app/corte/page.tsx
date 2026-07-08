@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from "next/link";
+import { ClipboardList } from "lucide-react";
 
 interface MedidaItem {
   tamanho: string;
@@ -77,7 +79,18 @@ export default function CalculadoraCortePage() {
 
   return (
     <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-800 antialiased">
-      <header className="mb-6 mt-4">
+      {/* Botão de Navegação para Voltar */}
+      <div className="flex justify-between items-center mb-4 mt-2">
+        <Link 
+          href="/"
+          className="inline-flex items-center gap-1.5 bg-white border border-gray-200 hover:bg-gray-50 rounded-full px-4 py-1.5 text-xs font-medium text-gray-600 shadow-sm transition-all"
+        >
+          <ClipboardList className="w-3.5 h-3.5 text-black" />
+          Voltar para Pedidos
+        </Link>
+      </div>
+
+      <header className="mb-6">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Otimizador de Cortes</h1>
         <p className="text-sm text-gray-500">Calcule o fracionamento de correntes sem desperdício.</p>
       </header>

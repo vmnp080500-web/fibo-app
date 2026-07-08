@@ -1,7 +1,7 @@
 import { OrderForm } from "@/components/order-form";
 import { OrderList } from "@/components/order-list";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { Search, Scissors } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -16,6 +16,17 @@ export default function HomePage() {
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 py-8 pb-16">
+        {/* Navegação Rápida entre Módulos */}
+        <div className="flex justify-end mb-2">
+          <Link 
+            href="/corte"
+            className="inline-flex items-center gap-1.5 bg-card border border-border hover:bg-accent rounded-full px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm transition-all"
+          >
+            <Scissors className="w-3.5 h-3.5 text-primary" />
+            Calculadora de Corte
+          </Link>
+        </div>
+
         {/* Header */}
         <header className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 shadow-lg shadow-primary/10 mb-4">
