@@ -25,7 +25,7 @@ export default function CalculadoraCortePage() {
 
   // Monitora o número de medidas para criar ou remover linhas do formulário automaticamente
   useEffect(() => {
-    const n = parseInt(numMedidas) || 1;
+    let n = parseInt(numMedidas) || 1;
     if (n > 20) n = 20; //Limite maximo de medidas para nao travar o app
     setMedidas((prev) => {
       const novasMedidas = [...prev];
