@@ -26,6 +26,7 @@ export default function CalculadoraCortePage() {
   // Monitora o número de medidas para criar ou remover linhas do formulário automaticamente
   useEffect(() => {
     const n = parseInt(numMedidas) || 1;
+    if (n > 20) n = 20; //Limite maximo de medidas para nao travar o app
     setMedidas((prev) => {
       const novasMedidas = [...prev];
       if (novasMedidas.length < n) {
@@ -112,21 +113,31 @@ export default function CalculadoraCortePage() {
           />
         </div>
 
+        
         {/* Passo 2: Quantidade de Medidas Diferentes */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
-            Quantas medidas diferentes quer cortar?
-          </label>
-          <input
-            type="number"
-            min="1"
-            max="10"
-            required
-            value={numMedidas}
-            onChange={(e) => setNumMedidas(e.target.value)}
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-black transition-all"
-          />
-        </div>
+<div>
+  <label className="block text-sm font-semibold text-gray-700 mb-1">
+    Quantas medidas diferentes quer cortar? (Máx: 20)
+  </label>
+  <input
+    type="number"
+    min="1"
+    max="20" // Altera o limite visual do HTML para 20
+    required
+    value={numMedidas}
+    onChange={(e) => {
+      const valor = e.target.value;
+      // Se o cara digitar algo maior que 20, a gente trava o texto em 20 na hora
+      if (parseInt(valor) > 20) {
+        setNumMedidas('20');
+      } else {
+        setNumMedidas(valor);
+      }
+    }}
+    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-black transition-all"
+  />
+</div>
+
 
         <hr className="border-gray-100 my-2" />
 
